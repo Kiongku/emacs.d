@@ -15,12 +15,6 @@
 (defconst *is-a-mac* (eq system-type 'darwin))
 
 ;;----------------------------------------------------------------------------
-;; Proxy  config
-;;----------------------------------------------------------------------------
-(setq url-proxy-services
-  '(("http" . "hthkproxy:80")))
-
-;;----------------------------------------------------------------------------
 ;; Bootstrap config
 ;;----------------------------------------------------------------------------
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -60,6 +54,7 @@
 (require 'init-flycheck)
 (require 'init-vim)
 (require 'init-minimap)
+(require 'init-sr-speedbar)
 
 (require 'init-recentf)
 (require 'init-ido)
