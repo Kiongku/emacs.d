@@ -10,16 +10,10 @@
 
 ;;; Code:
 
-;;; Require packages
-(require-package 'evil)
-(require-package 'elscreen)
-(maybe-require-package 'evil-surround)
-(maybe-require-package 'evil-numbers)
-
 ;; Assign C-u to vim scroll
 (setq evil-want-C-u-scroll t)
+(require-package 'evil)
 
-(require 'evil)
 (evil-mode 1)
 
 ;; change mode-line colour by evil state
@@ -36,6 +30,7 @@
                 (set-face-foreground 'mode-line (cdr color))))))
 
 ;; vim tabs
+(require-package 'elscreen)
 (load "elscreen" "Elscreen" t)
 (elscreen-start)
 ;; keybindings
@@ -44,15 +39,14 @@
 (define-key evil-normal-state-map (kbd "gT") 'elscreen-previous) ; go to previous tab
 (define-key evil-normal-state-map (kbd "gt") 'elscreen-next) ; go to next tab
 
-;;; Load optional evil addons
-
 ;; enable vim surround
-(after-load 'evil-surround
-  (global-evil-surround-mode 1))
+(require-package 'evil-surround)
+(global-evil-surround-mode 1)
+
 ;; number increment/decrement functions
-(after-load 'evil-numbers
-  (define-key evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
-  (define-key evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt))
+(require-package 'evil-numbers)
+(define-key evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
+(define-key evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt)
 
 (provide 'init-vim)
 
